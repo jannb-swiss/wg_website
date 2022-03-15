@@ -16,6 +16,9 @@
     @yield('content')
 </main>
 
+<div>
+    @include('components.footer')
+</div>
 
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script src="/js/app.js"></script>

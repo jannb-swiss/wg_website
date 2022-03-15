@@ -1,15 +1,7 @@
-.test {
-    background-color: red;
-}
-
-.test-color {
-    color: red;
-}
-
 .hero {
     height: 400px;
 
-    @media(min-width: 768px) {
+    @media(min-width: 992px) {
         height: 450px;
     }
 
@@ -54,12 +46,6 @@
         h1 {
             font-weight: 100;
         }
+
     }
 }
-
-.float-box {
-    background-color: $box-whit-2;
-    padding: 0px !important;
-}
-
-
