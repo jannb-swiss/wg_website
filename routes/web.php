@@ -30,7 +30,7 @@ Route::get('/verify', [App\Http\Controllers\Auth\RegisterController::class, 'ver
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('verified\dashboard');
 })->name('dashboard');
 
 Auth::routes();
