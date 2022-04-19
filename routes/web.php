@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,10 +30,8 @@ Route::get('/shopping', [App\Http\Controllers\PageController::class, 'shopping']
 Route::get('/verify', [App\Http\Controllers\Auth\RegisterController::class, 'verifyUser'])->name('verify.user');
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('verified\dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [App\Http\Controllers\WGController::class, 'dashboard'])->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->post('/dashboard', [App\Http\Controllers\WGController::class, 'createWG'])->name('createWG');
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
