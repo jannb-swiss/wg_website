@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 
 class WgGroup extends Model
 {
@@ -12,11 +14,16 @@ class WgGroup extends Model
     protected $table = 'wg_groups';
 
     protected $fillable = [
-        'wg_name', 'user_id'
+        'wg_name'
     ];
 
-    public function user() {
-        return $this->belongsTo('User');
+    public function users()
+    {
+        return $this->hasMany(User::class, 'wg_group_id');
     }
+
+/*     public function user() {
+        return $this->belongsTo('User');
+    }*/
 
 }

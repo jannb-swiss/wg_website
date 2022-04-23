@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+
     /**
      * The path to the "home" route for your application.
      *
@@ -17,7 +18,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+    protected $namespace = 'App\Http\Controllers';
+
     public const HOME = '/dashboard';
+
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -30,11 +34,16 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::middleware('web')
+                ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
-            Route::prefix('api')
+            Route::middleware(['web', 'auth'])
+                ->namespace($this->namespace)
+                ->group(base_path('routes/dashboard.php'));
+
+/*            Route::prefix('api')
                 ->middleware('api')
-                ->group(base_path('routes/api.php'));
+                ->group(base_path('routes/api.php'));*/
         });
     }
 

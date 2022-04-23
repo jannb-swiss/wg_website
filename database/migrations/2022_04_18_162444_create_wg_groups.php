@@ -16,13 +16,9 @@ class CreateWgGroups extends Migration
         Schema::create('wg_groups', function (Blueprint $table) {
             $table->id();
             $table->string('wg_name');
-
-            $table->unsignedBigInteger('user_id')->unsigned()->nullable();
-
-            $table->foreign('user_id')->references('id')->on('users');
-
-/*            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');*/
-
+/*            $table->unsignedBigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');*/
+    /*        $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');*/
             $table->timestamps();
         });
     }
