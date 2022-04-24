@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Enums\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class DashboredController extends Controller
+class DashboardController extends Controller
 {
     public function __invoke(Request $request)
     {

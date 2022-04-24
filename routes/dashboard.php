@@ -22,8 +22,7 @@ use App\Http\Controllers\PageController;
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {return view('verified\dashboard');})->name('dashboard');*/
 
-Route::get('/dashboard', 'WgGroupController@index')->name('dashboard');
-Route::post('/dashboard', 'WgGroupController@store')->name('wgGroup.store');
+Route::get('/', 'DashboardController')->name('dashboard');
 
 Route::get('/modifyUser','UserController@index')->name('');
 

@@ -23,6 +23,6 @@
 ])
 
 <div class="float-box mt-4">
-    <a href="/createWg" class="nav-link px-2 footer-font">WG erstellen</a>
+    <a href="/createWG" class="nav-link px-2 footer-font">WG erstellen</a>
     <a href="/modifyUser" class="nav-link px-2 footer-font">User Bearbeiten</a>
 </div>

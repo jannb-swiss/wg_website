@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\WgGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,27 +37,13 @@ class WgGroupController extends Controller
      */
     public function store(Request $request)
     {
-        /*        $data = $request->validate([
-            'wg_name' => 'required|string',
-        ]);
 
         $wg = WgGroup::create([
-            'wg_group_id' => \auth()->user()->id,
             'wg_name' => $request->wg_name
-        ]);*/
-
-        $wg = Auth::user()->WgGroup();
-        if($wg) {
-            $wg->wg_name = $request->wg_name;
-            $wg->users()->save(Auth::user());
-        }
-        /*        $wg->wg_name = $request->wg_name;
-                $wg->save();*/
+        ]);
+        $wg->users()->save(Auth::user());
 
 
-/*        $wg = Auth::user()-> WgGroup();
-        $wg->wg_name = $request->wg_name;
-        $wg->save();*/
 
             if($wg != null){
                 return redirect()->back()->with(session()->flash('alert-success', 'Your wg are createt'));
@@ -96,7 +83,7 @@ class WgGroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
