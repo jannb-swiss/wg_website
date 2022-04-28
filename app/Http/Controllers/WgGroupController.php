@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\WgGroup;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
+use Symfony\Component\Console\Input\Input;
 
 class WgGroupController extends Controller
 {
@@ -16,7 +20,8 @@ class WgGroupController extends Controller
      */
     public function index()
     {
-        return view('verified.createWgGroupe');
+        $wgName = Auth::user()->wgGroup()->firstOrFail()->wg_name;
+        return View::make('verified.indexWgGroupe', ['wgName' => $wgName]);
     }
 
     /**
@@ -24,9 +29,19 @@ class WgGroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Data $data)
     {
-        //
+
+        $wg = Auth::user();
+        return view('verified.createWgGroupe');
+
+/*      $wg = User::select('wg_group_id')->where('id', Auth::id())->get();
+        return"Hall".$wg;
+        if($wg === null) {
+            return view ('verified.indexWgGroupe');
+        }else{
+            return view('verified.createWgGroupe');
+        }*/
     }
 
     /**
@@ -38,18 +53,16 @@ class WgGroupController extends Controller
     public function store(Request $request)
     {
 
-        $wg = WgGroup::create([
-            'wg_name' => $request->wg_name
-        ]);
-        $wg->users()->save(Auth::user());
+            $wg = WgGroup::create([
+                'wg_name' => $request->wg_name
+            ]);
+            $wg->users()->save(Auth::user());
 
-
-
-            if($wg != null){
+/*            if($wg != null){
                 return redirect()->back()->with(session()->flash('alert-success', 'Your wg are createt'));
             }
 
-        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));
+        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));*/
     }
 
     /**
@@ -60,7 +73,9 @@ class WgGroupController extends Controller
      */
     public function show($id)
     {
-        //
+        $wgGroup = WgGroup::where('id', Auth::id())->findOrFail();
+        /*return"Hall".$wg;*/
+        return view ('verified.indexWgGroupe', ['wgGroup' => $wgGroup]);
     }
 
     /**

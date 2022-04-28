@@ -22,10 +22,16 @@ use App\Http\Controllers\PageController;
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {return view('verified\dashboard');})->name('dashboard');*/
 
-Route::get('/', 'DashboardController')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/modifyUser','UserController@index')->name('');
 
-Route::get('/createWG', 'WgGroupController@index')->name('');
+Route::get('/indexWG', 'WgGroupController@index')->name('');
 Route::post('/createWG', 'WgGroupController@store')->name('wgGroup.store');
+Route::get('/createWG', 'WgGroupController@create')->name('');
+Route::get('/indexWG/{id}', 'WgGroupController@show')->name('');
+Route::put('/indexWG/{id}', 'WgGroupController@update')->name('');
+Route::delete('/indexWG/{id}', 'WgGroupController@destroy')->name('');
+Route::delete('/indexWG/{id}/edit', 'WgGroupController@edit')->name('');
+
 

@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
+
+    public function index()
+    {
+        return view('verified.dashboard');
+    }
+
+
     public function __invoke(Request $request)
     {
         $request->session()->reflash();

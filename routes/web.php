@@ -14,7 +14,7 @@ use App\Http\Controllers\PageController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 
 Route::get('/', 'PageController@home')->name('home');
 Route::get('/about', 'PageController@about')->name('about');

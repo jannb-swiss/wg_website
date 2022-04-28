@@ -82,23 +82,4 @@ class UserController extends Controller
         //
     }
 
-    /*    public function dashboard()
-    {
-        return view('verified.dashboard');
-    }
-
-    public function createWG(Request $request)
-    {
-        $wg = new WgGroup();
-        $wg->wg_name = $request->wg_name;
-        $wg->save();
-
-        if($user == 0)
-
-        if($wg != null){
-            return redirect()->back()->with(session()->flash('alert-success', 'Your wg are createt'));
-        }
-
-        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));
-    }*/
 }
