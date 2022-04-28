@@ -10,6 +10,12 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+
+
+/**
+ * App\User
+ * @property-read \App\WgGroup|null $wgGroup
+ */
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -27,6 +33,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'wg_group_id'
     ];
 
     /**
@@ -56,6 +63,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
+        /*'profile_photo_url',*/
     ];
+
+    public function wgGroup() {
+        return $this->belongsTo(WgGroup::class);
+    }
+
+/*    public function wgGroup()
+    {
+        return $this->hasOne('WgGroup','user_id');
+    }*/
+
 }

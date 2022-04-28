@@ -14,20 +14,24 @@ use App\Http\Controllers\PageController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
 
-Route::get('/', 'PageController@home')->name('home');
-Route::get('/about', 'PageController@about')->name('about');
-Route::get('/login', 'Auth\LoginController@login')->name('login');
-Route::get('/verify', 'Auth\RegisterController@verifyUser')->name('verify.user');
-Route::get('/register', 'Auth\RegisterController@register')->name('register');
-Route::get('/verification', 'Auth\VerificationController@verification')->name('verification');
-Route::get('/verify', 'Auth\RegisterController@verifyUser')->name('verify.user');
+
+
 
 
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {return view('verified\dashboard');})->name('dashboard');*/
 
-Auth::routes();
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/modifyUser','UserController@index')->name('');
+
+Route::get('/indexWG', 'WgGroupController@index')->name('');
+Route::post('/createWG', 'WgGroupController@store')->name('wgGroup.store');
+Route::get('/createWG', 'WgGroupController@create')->name('');
+Route::get('/indexWG/{id}', 'WgGroupController@show')->name('');
+Route::put('/indexWG/{id}', 'WgGroupController@update')->name('');
+Route::delete('/indexWG/{id}', 'WgGroupController@destroy')->name('');
+Route::delete('/indexWG/{id}/edit', 'WgGroupController@edit')->name('');
 
 
