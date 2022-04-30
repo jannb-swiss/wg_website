@@ -83,7 +83,7 @@
                         <h5 class="">Krieg deine Finanzen in den Griff</h5>
                     </div>
                     <div class="col-md-4 col-xs-12">
-                        <a href="shopping" class="href-box">Bearbeiten<i class="icon-box bi bi-caret-right"></i></a>
+                        <a href="/einkaufsliste" class="href-box">Bearbeiten<i class="icon-box bi bi-caret-right"></i></a>
                     </div>
                 </div>
             </div>

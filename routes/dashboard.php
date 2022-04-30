@@ -34,4 +34,8 @@ Route::put('/indexWG/{id}', 'WgGroupController@update')->name('');
 Route::delete('/indexWG/{id}', 'WgGroupController@destroy')->name('');
 Route::delete('/indexWG/{id}/edit', 'WgGroupController@edit')->name('');
 
+Route::get('/einkaufsliste', 'ShoppingListController@index')->name('');
+Route::post('/einkaufsliste', 'ShoppingListController@store')->name('shoppingList.store');
+Route::patch('/einkaufsliste/{shoppingList}', 'ShoppingListController@update')->name('shoppingList.update');
+
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ShoppingList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShoppingListController extends Controller
 {
@@ -13,7 +15,15 @@ class ShoppingListController extends Controller
      */
     public function index()
     {
-        //
+        // paginate the authorized user's shoppingLists with 5 per page
+        $shoppingLists = Auth::user()
+            ->shoppingLists()
+            ->orderBy('is_complete')
+            ->orderByDesc('created_at')
+            ->paginate(5);
+
+        // return shoppingList index view with paginated shoppingLists
+        return view('shopping_list.indexShoppingList', ['shoppingLists' => $shoppingLists]);
     }
 
     /**
@@ -34,7 +44,22 @@ class ShoppingListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate the given request
+        $data = $this->validate($request, [
+            'shopping_list_title' => 'required|string|max:255',
+        ]);
+
+        // create a new incomplete shoppingList with the given title
+        Auth::user()->shoppingLists()->create([
+            'shopping_list_title' => $data['shopping_list_title'],
+            'is_complete' => false,
+        ]);
+
+        // flash a success message to the session
+        session()->flash('status', 'shoppingList Created!');
+
+        // redirect to shoppingLists index
+        return redirect('/einkaufsliste');
     }
 
     /**
@@ -66,9 +91,20 @@ class ShoppingListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ShoppingList $shoppingList)
     {
-        //
+        // check if the authenticated user can complete the shoppingList
+        /*$this->authorize('complete', $shoppingList);*/
+
+        // mark the shoppingList as complete and save it
+        $shoppingList->is_complete = true;
+        $shoppingList->save();
+
+        // flash a success message to the session
+        session()->flash('status', 'Produkt wurde hinzugefügt!');
+
+        // redirect to shoppingLists index
+        return redirect('/einkaufsliste');
     }
 
     /**

@@ -70,6 +70,11 @@ class User extends Authenticatable
         return $this->belongsTo(WgGroup::class);
     }
 
+    public function shoppingLists()
+    {
+        return $this->hasMany(ShoppingList::class);
+    }
+
 /*    public function wgGroup()
     {
         return $this->hasOne('WgGroup','user_id');
