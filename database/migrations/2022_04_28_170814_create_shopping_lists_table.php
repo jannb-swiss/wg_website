@@ -16,6 +16,7 @@ class CreateShoppingListsTable extends Migration
         Schema::create('shopping_lists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->foreignId('wg_id')->nullable()->constrained('wg_groups');
             $table->string('shopping_list_title');
             $table->boolean('is_complete');
             $table->timestamps();
