@@ -66,7 +66,7 @@ class ShoppingListController extends Controller
         $shoppingList->user()->associate($user);
         $shoppingList->wgGroupShoppingList()->associate($wg);
         $shoppingList->save();
-        
+
         // flash a success message to the session
         session()->flash('status', 'shoppingList Created!');
 
