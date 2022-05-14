@@ -27,6 +27,11 @@ class WgGroup extends Model
         return $this->hasMany(ShoppingList::class, 'wg_id');
     }
 
+    public function financeWgGroup()
+    {
+        return $this->hasMany(Finance::class, 'wg_id');
+    }
+
 /*     public function user() {
         return $this->belongsTo('User');
     }*/
