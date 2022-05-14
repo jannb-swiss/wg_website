@@ -32,11 +32,15 @@ Route::get('/createWG', 'WgGroupController@create')->name('');
 Route::get('/indexWG/{id}', 'WgGroupController@show')->name('');
 Route::put('/indexWG/{id}', 'WgGroupController@update')->name('');
 Route::delete('/indexWG/{id}', 'WgGroupController@destroy')->name('');
-Route::delete('/indexWG/{id}/edit', 'WgGroupController@edit')->name('');
+Route::get('/indexWG/{id}/edit', 'WgGroupController@edit')->name('');
 
 Route::get('/einkaufsliste', 'ShoppingListController@index')->name('');
 Route::post('/einkaufsliste', 'ShoppingListController@store')->name('shoppingList.store');
 Route::patch('/einkaufsliste/{shoppingList}', 'ShoppingListController@update')->name('shoppingList.update');
+
+Route::get('/finanzen', 'FinanceController@index')->name('');
+Route::post('/finanzen', 'FinanceController@store')->name('finance.store');
+Route::delete('/finanzen/{finance}', 'FinanceController@destroy')->name('finance.destroy');
 
 /*Route::get('/helloWorld', 'HelloWorldController@index')->name('helloWorld.index');
 Route::get('/helloWorld/create', 'HelloWorldController@create')->name('helloWorld.create');

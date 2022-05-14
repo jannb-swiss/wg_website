@@ -68,7 +68,7 @@ class ShoppingListController extends Controller
         $shoppingList->save();
 
         // flash a success message to the session
-        session()->flash('status', 'shoppingList Created!');
+        session()->flash('status', 'Produkt wurde hinzugefügt!');
 
         // redirect to shoppingLists index
         return redirect('/einkaufsliste');
