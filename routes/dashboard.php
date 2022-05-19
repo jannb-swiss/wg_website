@@ -42,6 +42,11 @@ Route::get('/finanzen', 'FinanceController@index')->name('');
 Route::post('/finanzen', 'FinanceController@store')->name('finance.store');
 Route::delete('/finanzen/{finance}', 'FinanceController@destroy')->name('finance.destroy');
 
+Route::get('/putzplan', 'CleaningPlanController@index')->name('');
+Route::post('/putzplan', 'CleaningPlanController@store')->name('cleaningPlan.store');
+Route::patch('/putzplan', 'CleaningPlanController@update')->name('cleaningPlan.update');
+Route::delete('/putzplan/{putzplan}', 'CleaningPlanController@destroy')->name('cleaningPlan.destroy');
+
 /*Route::get('/helloWorld', 'HelloWorldController@index')->name('helloWorld.index');
 Route::get('/helloWorld/create', 'HelloWorldController@create')->name('helloWorld.create');
 Route::post('/helloWorld', 'HelloWorldController@store')->name('helloWorld.store');

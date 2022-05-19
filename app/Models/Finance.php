@@ -43,4 +43,6 @@ class Finance extends Model
     {
         return $this->belongsTo(WgGroup::class, 'wg_id');
     }
+
+
 }
