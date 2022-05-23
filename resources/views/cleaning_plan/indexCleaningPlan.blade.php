@@ -26,6 +26,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
+                @if ($allUsersCount > $cleaningPlansCount)
+                    <strong>Erstelle gleiche viele PutzItems oder mehr wie Users existieren!</strong>
+                @endif
+
                 <div class="col-md-8">
 
                     <div class="card">
@@ -36,19 +40,23 @@
                                 <th scope="col">Auftrags Nummer</th>
                                 <th scope="col">Putzplan</th>
                                 </thead>
-                                @foreach ($cleaningPlans as $index => $cleaningPlan)
+                                @foreach ($cleaningPlansUnsort as $cleaningPlan)
 
                                     <tbody>
                                     <tr>
-                                        <td>
-                                            {{ $index+1 }}
-                                        </td>
 
                                         <td>
                                             {{ $cleaningPlan->cleaning_task }}
                                         </td>
+                                        <td class="text-right mt-2">
+                                                <form method="POST"
+                                                      action="{{ route('cleaningPlan.destroy', $cleaningPlan->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-primary">Löschen</button>
+                                                </form>
+                                        </td>
                                     </tr>
-
                                     </tbody>
                                 @endforeach
                             </table>

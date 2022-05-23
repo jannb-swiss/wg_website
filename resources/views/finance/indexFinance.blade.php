@@ -112,14 +112,14 @@
                                         @endif
                                     </td>
                                     <td class="text-right mt-2">
-                                        @if (! $finance->is_complete)
+                                        {{--@if (! $finance->is_complete)--}}
                                             <form method="POST"
                                                   action="{{ route('finance.destroy', $finance->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-primary">Löschen</button>
                                             </form>
-                                        @endif
+                                        {{--@endif--}}
                                     </td>
                                 </tr>
                                 </tbody>

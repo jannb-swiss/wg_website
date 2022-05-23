@@ -43,6 +43,12 @@ class CleaningPlanController extends Controller
             ->orderBy('cleaning_plans.updated_at', 'asc')
             ->get();
 
+        $cleaningPlansUnsort = DB::table('cleaning_plans')
+            ->select('cleaning_task', 'cleaning_plans.id', 'cleaning_plans.updated_at')
+            ->join('wg_groups', 'cleaning_plans.wg_id', '=', 'wg_groups.id')
+            ->where('wg_id', Auth::user()->wgGroup()->firstOrFail()->id)
+            ->get();
+
         $cleaningPlansCount = DB::table('cleaning_plans')
             ->select('cleaning_task')
             ->join('wg_groups', 'cleaning_plans.wg_id', '=', 'wg_groups.id')
@@ -57,7 +63,8 @@ class CleaningPlanController extends Controller
 
 
 
-        return view('cleaning_plan.indexCleaningPlan', ['maxLength' => $maxLength, 'cleaningPlans' => $cleaningPlans, "allUsers" => $allUsers, ]);
+
+        return view('cleaning_plan.indexCleaningPlan', compact(['cleaningPlans', 'maxLength', 'allUsers', 'cleaningPlansCount', 'allUsersCount', 'cleaningPlansUnsort']));
     }
 
     /**
@@ -131,7 +138,7 @@ class CleaningPlanController extends Controller
     public function update(Schedule $schedule)
     {
 
-        $cleaningPlan = CleaningPlan::select('cleaning_task', 'cleaning_plans.id', 'cleaning_plans.updated_at', 'cleaning_plans.update_trigger')
+/*        $cleaningPlan = CleaningPlan::select('cleaning_task', 'cleaning_plans.id', 'cleaning_plans.updated_at', 'cleaning_plans.update_trigger')
             ->join('wg_groups', 'cleaning_plans.wg_id', '=', 'wg_groups.id')
             ->where('wg_id', Auth::user()->wgGroup()->firstOrFail()->id)
             ->orderBy('cleaning_plans.updated_at', 'asc')
@@ -148,15 +155,7 @@ class CleaningPlanController extends Controller
         }
         })->everyMinute();
 
-        return redirect('/putzplan');
-
-        /*        $schedule->call(function () use ($cleanings) {
-
-                    $cleanings->updated_at = DB::raw('NOW()');
-                    $cleanings->save();
-
-                })->everyMinute();*/
-
+        return redirect('/putzplan');*/
 
     }
 
@@ -166,8 +165,9 @@ class CleaningPlanController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CleaningPlan $cleaningPlan)
     {
-        //
+        $cleaningPlan->delete();
+        return redirect('/putzplan');
     }
 }
