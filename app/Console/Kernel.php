@@ -2,8 +2,11 @@
 
 namespace App\Console;
 
+use App\Models\CleaningPlan;
+use App\Models\WgGroup;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Auth;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,7 +27,29 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+
+        $schedule->call(function () {
+
+            $wgs = CleaningPlan::distinct('wg_id')->count();
+
+            for($i = 1; $i <= $wgs; $i++) {
+                $cleaningPlan = CleaningPlan::select('cleaning_task', 'cleaning_plans.id', 'cleaning_plans.updated_at', 'cleaning_plans.update_trigger')
+                    ->join('wg_groups', 'cleaning_plans.wg_id', '=', 'wg_groups.id')
+                    ->where(function ($query) use ($i) {
+                        $query->where('wg_id' , $i);
+                    })
+                    ->orderBy('cleaning_plans.updated_at', 'asc')
+                    ->first();
+
+                if ($cleaningPlan->update_trigger = true) {
+                    $cleaningPlan->update_trigger = false;
+                } else {
+                    $cleaningPlan->update_trigger = true;
+                }
+                $cleaningPlan->save();
+            }
+
+        })->everyMinute();
     }
 
     /**
