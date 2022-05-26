@@ -75,6 +75,11 @@ class User extends Authenticatable
         return $this->hasMany(ShoppingList::class);
     }
 
+    public function chat()
+    {
+        return $this->hasMany(Chat::class);
+    }
+
 /*    public function wgGroup()
     {
         return $this->hasOne('WgGroup','user_id');

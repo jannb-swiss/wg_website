@@ -32,6 +32,11 @@ class WgGroup extends Model
         return $this->hasMany(Finance::class, 'wg_id');
     }
 
+    public function chatWgGroup()
+    {
+        return $this->hasMany(Chat::class, 'wg_id');
+    }
+
     public function cleaningPlanWgGroup()
     {
         return $this->hasMany(CleaningPlan::class, 'wg_id');

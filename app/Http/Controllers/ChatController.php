@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
+use App\Models\Chat;
+use App\Models\Finance;
+use App\Models\User;
+use App\Models\WgGroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
@@ -13,72 +20,29 @@ class ChatController extends Controller
      */
     public function index()
     {
-        //
+        return view ('chat.indexChat');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function fetchMessages()
     {
-        //
+        return WgGroup::where('id', Auth::user()->wgGroup()->firstOrFail()->id)
+            ->firstOrFail()
+            ->chatWgGroup()
+            ->with('user')
+            ->get();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function sendMessage(Request $request)
     {
-        //
-    }
+        $user = Auth::user();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $message = $user->chat()->create([
+            'message' => $request->input('message'),
+            'wg_id' => Auth::user()->wgGroup()->firstOrFail()->id
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        broadcast(new MessageSent($user, $message))->toOthers();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return ['status' => 'Message Sent!'];
     }
 }

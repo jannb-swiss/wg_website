@@ -42,6 +42,11 @@ Route::get('/finanzen', 'FinanceController@index')->name('');
 Route::post('/finanzen', 'FinanceController@store')->name('finance.store');
 Route::delete('/finanzen/{finance}', 'FinanceController@destroy')->name('finance.destroy');
 
+Route::get('/chat', 'ChatController@index');
+Route::get('/messages', 'ChatController@fetchMessages');
+Route::post('/messages', 'ChatController@sendMessage');
+
+
 Route::get('/putzplan', 'CleaningPlanController@index')->name('');
 Route::post('/putzplan', 'CleaningPlanController@store')->name('cleaningPlan.store');
 Route::patch('/putzplan', 'CleaningPlanController@update')->name('cleaningPlan.update');

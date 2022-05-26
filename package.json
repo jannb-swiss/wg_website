@@ -32,6 +32,8 @@
     },
     "dependencies": {
         "bootstrap-icons": "^1.8.1",
+        "laravel-echo": "^1.11.7",
+        "pusher-js": "^7.1.0-beta",
         "v6": "^0.0.0"
     }
 }
