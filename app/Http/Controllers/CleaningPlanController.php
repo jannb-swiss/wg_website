@@ -138,25 +138,6 @@ class CleaningPlanController extends Controller
     public function update(Schedule $schedule)
     {
 
-/*        $cleaningPlan = CleaningPlan::select('cleaning_task', 'cleaning_plans.id', 'cleaning_plans.updated_at', 'cleaning_plans.update_trigger')
-            ->join('wg_groups', 'cleaning_plans.wg_id', '=', 'wg_groups.id')
-            ->where('wg_id', Auth::user()->wgGroup()->firstOrFail()->id)
-            ->orderBy('cleaning_plans.updated_at', 'asc')
-            ->first();
-
-
-        $schedule->call(function () use ($cleaningPlan) {
-        if ($cleaningPlan->update_trigger = true) {
-            $cleaningPlan->update_trigger = false;
-            $cleaningPlan->save();
-        } else {
-            $cleaningPlan->update_trigger = true;
-            $cleaningPlan->save();
-        }
-        })->everyMinute();
-
-        return redirect('/putzplan');*/
-
     }
 
     /**

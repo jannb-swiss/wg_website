@@ -27,6 +27,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/modifyUser','UserController@index')->name('');
 
 Route::get('/indexWG', 'WgGroupController@index')->name('');
+Route::patch('/indexWG', 'WgGroupController@update')->name('wgGroup.update');
 Route::post('/createWG', 'WgGroupController@store')->name('wgGroup.store');
 Route::get('/createWG', 'WgGroupController@create')->name('');
 Route::get('/indexWG/{id}', 'WgGroupController@show')->name('');
