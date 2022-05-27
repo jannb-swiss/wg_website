@@ -25,8 +25,6 @@ class WgGroupController extends Controller
         $wgGroup = Auth::user()->wgGroup()->get();
         $User = Auth::user();
 
-        /*return $wgUser;*/
-
         if($wgGroup->isEmpty()){
             return view('verified.createWgGroupe');
         }else{
@@ -54,15 +52,12 @@ class WgGroupController extends Controller
      */
     public function store(Request $request)
     {
-
             $wg = WgGroup::create([
                 'wg_name' => $request->wg_name
             ]);
             $wg->users()->save(Auth::user());
 
             return redirect('/indexWG');
-
-        /*return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));*/
     }
 
     /**

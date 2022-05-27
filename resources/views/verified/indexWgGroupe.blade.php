@@ -32,7 +32,7 @@
         <form method="POST" action="{{ route('wgGroup.update') }}">
             @csrf
             @method('PATCH')
-            <button type="submit" class="btn btn-primary">Complete</button>
+            <button type="submit" class="btn btn-primary">Verlassen</button>
         </form>
     @endisset
 
