@@ -23,12 +23,18 @@
 ])
 
 <section class="container-lg mt-5">
+
     @isset($wgName)
         <h1>{{$wgName}}</h1>
     @endisset
-{{--@foreach($wgGroups as $wgGroup)
-    {{$wgGroup->wg_name}}
-    @endforeach--}}
+
+    @isset($User)
+        <form method="POST" action="{{ route('wgGroup.update') }}">
+            @csrf
+            @method('PATCH')
+            <button type="submit" class="btn btn-primary">Complete</button>
+        </form>
+    @endisset
 
     <div class="row align-items-start">
         <div class="col-sm col-xs-12 m-2 float-box">
@@ -83,11 +89,12 @@
                         <h5 class="">Krieg deine Finanzen in den Griff</h5>
                     </div>
                     <div class="col-md-4 col-xs-12">
-                        <a href="/einkaufsliste" class="href-box">Bearbeiten<i class="icon-box bi bi-caret-right"></i></a>
+                        <a href="/einkaufsliste" class="href-box">Bearbeiten<i
+                                class="icon-box bi bi-caret-right"></i></a>
                     </div>
                 </div>
             </div>
             <img height="100%" width="100%" src="/images/img_shopping.jpg">
         </div>
     </div>
-    </section>
+</section>
