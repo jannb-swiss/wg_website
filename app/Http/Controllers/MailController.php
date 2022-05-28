@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InviteEmail;
 use App\Mail\SignupEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -15,4 +16,14 @@ class MailController extends Controller
         ];
         Mail::to($email)->send(new SignupEmail($data));
     }
+
+    public static function sendInvitationEmail($wg_name, $wg_group_id, $userMail){
+        $data = [
+            'wg_name' => $wg_name,
+            'wg_group_id' => $wg_group_id,
+        ];
+        Mail::to($userMail)->send(new InviteEmail($data));
+    }
+
+
 }

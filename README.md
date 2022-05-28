@@ -14,3 +14,4 @@ auto: php artisan schedule:work
 https://www.oulub.com/docs/laravel/de-de/migrations
 https://getstream.io/blog/invite-only-chat-laravel-vue/
 https://pusher.com/tutorials/how-to-build-a-chat-app-with-vue-js-and-laravel/
+https://getstream.io/blog/invite-only-chat-laravel-vue/#inviting-users

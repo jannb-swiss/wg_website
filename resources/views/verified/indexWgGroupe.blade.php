@@ -35,6 +35,10 @@
             <button type="submit" class="btn btn-primary">Verlassen</button>
         </form>
     @endisset
+        <div class="col-md-4 col-xs-12">
+            <a href="/einladen" class="href-box">Bearbeiten<i class="icon-box bi bi-caret-right"></i></a>
+        </div>
+
 
     <div class="row align-items-start">
         <div class="col-sm col-xs-12 m-2 float-box">
