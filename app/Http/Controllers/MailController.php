@@ -16,14 +16,4 @@ class MailController extends Controller
         ];
         Mail::to($email)->send(new SignupEmail($data));
     }
-
-    public static function sendInvitationEmail($wg_name, $wg_group_id, $userMail){
-        $data = [
-            'wg_name' => $wg_name,
-            'wg_group_id' => $wg_group_id,
-        ];
-        Mail::to($userMail)->send(new InviteEmail($data));
-    }
-
-
 }

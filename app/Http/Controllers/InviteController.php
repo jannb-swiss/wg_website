@@ -18,6 +18,8 @@ class InviteController extends Controller
         /*return User::where('id', Auth::user()->id)->select('wg_group_id')->firstOrFail();*/
         /*return User::where(['wg_group_id' => $wg_group_id])->first();*/
 
+        /*return User::where('id', Auth::user()->id)->value('wg_group_id');*/
+
         return View('invite.invite');
     }
 
@@ -25,11 +27,20 @@ class InviteController extends Controller
         //gibt wg_group_id in der ich den User einladen will zurück
         $wg = User::where('id', Auth::user()->id)/*->select('wg_group_id')*/->firstOrFail();
 
+        $userAuth = User::where('id', Auth::user()->id)->value('wg_group_id');
         $userMail = $request->email;
+        $userExist = User::where('email', $userMail)->first();
 
-        MailController::sendSignupEmail($wg->wg_name, $wg->wg_group_id, $userMail);
+        if($userExist != null){
+            $userExist->wg_group_id = $userAuth;
+            $userExist->save();
+            return redirect('/einladen')->with('status', 'Der User ist nun ein teil der WG');
+        } else{
+            return redirect('/einladen')->with('status-bad', 'Der User muss sich zuerst registrieren!');
+        }
 
-        return redirect()->route('login')->with(session()->flash('alert-danger', 'Something went wrong:('));
+        return redirect('/einladen')->with('status', 'Etwas ist schief gelaufen');
+
     }
 
     /**
