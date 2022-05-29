@@ -5025,7 +5025,6 @@ __webpack_require__.r(__webpack_exports__);
     sendMessage: function sendMessage() {
       this.$emit("messagesent", {
         user: this.user,
-        wg: this.wg,
         message: this.newMessage
       });
       this.newMessage = "";
