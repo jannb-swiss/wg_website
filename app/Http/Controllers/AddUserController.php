@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class InviteController extends Controller
+class AddUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,18 +15,10 @@ class InviteController extends Controller
      */
     public function index()
     {
-        /*return User::where('id', Auth::user()->id)->select('wg_group_id')->firstOrFail();*/
-        /*return User::where(['wg_group_id' => $wg_group_id])->first();*/
-
-        /*return User::where('id', Auth::user()->id)->value('wg_group_id');*/
-
-        return View('invite.invite');
+        return View('add_User.addUser');
     }
 
     public function inviteUser(Request $request) {
-        //gibt wg_group_id in der ich den User einladen will zurück
-        $wg = User::where('id', Auth::user()->id)/*->select('wg_group_id')*/->firstOrFail();
-
         $userAuth = User::where('id', Auth::user()->id)->value('wg_group_id');
         $userMail = $request->email;
         $userExist = User::where('email', $userMail)->first();
@@ -34,13 +26,12 @@ class InviteController extends Controller
         if($userExist != null){
             $userExist->wg_group_id = $userAuth;
             $userExist->save();
-            return redirect('/einladen')->with('status', 'Der User ist nun ein teil der WG');
+            return redirect('/mitglied')->with('status', 'Der User ist nun ein teil der WG');
         } else{
-            return redirect('/einladen')->with('status-bad', 'Der User muss sich zuerst registrieren!');
+            return redirect('/mitglied')->with('status-bad', 'Der User muss sich zuerst registrieren!');
         }
 
-        return redirect('/einladen')->with('status', 'Etwas ist schief gelaufen');
-
+        return redirect('/mitglied')->with('status', 'Etwas ist schief gelaufen');
     }
 
     /**

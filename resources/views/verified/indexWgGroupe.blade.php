@@ -2,7 +2,6 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
-            This is a testt
         </h2>
     </x-slot>
 
@@ -28,16 +27,20 @@
         <h1>{{$wgName}}</h1>
     @endisset
 
-    @isset($User)
-        <form method="POST" action="{{ route('wgGroup.update') }}">
-            @csrf
-            @method('PATCH')
-            <button type="submit" class="btn btn-primary">Verlassen</button>
-        </form>
-    @endisset
-        <div class="col-md-4 col-xs-12">
-            <a href="/einladen" class="href-box">Bearbeiten<i class="icon-box bi bi-caret-right"></i></a>
+    <div class="row">
+        <div class="col-md-3 col-xs-12 mb-1">
+            @isset($User)
+                <form method="POST" action="{{ route('wgGroup.update') }}">
+                    @csrf
+                    @method('PATCH')
+                    <button type="submit" class="btn btn-primary">Gruppe Verlassen</button>
+                </form>
+            @endisset
         </div>
+        <div class="col-md-3 col-xs-12 mb-1">
+            <a href="/mitglied" class="btn btn-primary href-box">Bewohner hinzufügen</a>
+        </div>
+    </div>
 
 
     <div class="row align-items-start">

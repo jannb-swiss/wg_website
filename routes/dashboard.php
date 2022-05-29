@@ -54,6 +54,6 @@ Route::patch('/putzplan', 'CleaningPlanController@update')->name('cleaningPlan.u
 Route::delete('/putzplan/{cleaningPlan}', 'CleaningPlanController@destroy')->name('cleaningPlan.destroy');
 
 
-Route::get('/einladen', 'InviteController@index')->name('');
-Route::post('/einladen', 'InviteController@inviteUser')->name('invite.inviteUser');
+Route::get('/mitglied', 'AddUserController@index')->name('');
+Route::post('/mitglied', 'AddUserController@inviteUser')->name('addUser');
 

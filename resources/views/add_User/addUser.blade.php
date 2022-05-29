@@ -27,7 +27,7 @@
 
                     <div class="card-body">
                         <p>Gib die EMail-Adresse ein um einen User hinzuzufügen. Der User muss jedoch bereits registriert sein.</p>
-                        <form method="POST" action="{{ route('invite.inviteUser') }}">
+                        <form method="POST" action="{{ route('addUser') }}">
                             @csrf
                             <div class="row mb-3">
                                 <label for="email"
