@@ -53,11 +53,7 @@ Route::post('/putzplan', 'CleaningPlanController@store')->name('cleaningPlan.sto
 Route::patch('/putzplan', 'CleaningPlanController@update')->name('cleaningPlan.update');
 Route::delete('/putzplan/{cleaningPlan}', 'CleaningPlanController@destroy')->name('cleaningPlan.destroy');
 
-/*Route::get('/helloWorld', 'HelloWorldController@index')->name('helloWorld.index');
-Route::get('/helloWorld/create', 'HelloWorldController@create')->name('helloWorld.create');
-Route::post('/helloWorld', 'HelloWorldController@store')->name('helloWorld.store');
-Route::get('/helloWorld/{helloWorld}', 'HelloWorldController@show')->name('helloWorld.show');
-Route::get('/helloWorld/{helloWorld}/edit', 'HelloWorldController@edit')->name('helloWorld.edit');
-Route::put('/helloWorld/{helloWorld}', 'HelloWorldController@update')->name('helloWorld.update');
-Route::delete('/helloWorld/{helloWorld}', 'HelloWorldController@destroy')->name('helloWorld.destroy');*/
+
+Route::get('/mitglied', 'AddUserController@index')->name('');
+Route::post('/mitglied', 'AddUserController@inviteUser')->name('addUser');
 
