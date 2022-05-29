@@ -41,7 +41,9 @@
 
                             <div class="form-group">
                                 <label for="shopping_list_title">Title</label>
-                                <input id="shopping_list_title" name="shopping_list_title" type="text" maxlength="255" class="form-control{{ $errors->has('shopping_list_title') ? ' is-invalid' : '' }}" autocomplete="off" />
+                                <input id="shopping_list_title" name="shopping_list_title" type="text" maxlength="255"
+                                       class="form-control{{ $errors->has('shopping_list_title') ? ' is-invalid' : '' }}"
+                                       autocomplete="off"/>
 
                                 @if ($errors->has('shopping_list_title'))
                                     <span class="invalid-feedback" role="alert">
@@ -73,7 +75,8 @@
                                     </td>
                                     <td class="text-right">
                                         @if (! $shoppingList->is_complete)
-                                            <form method="POST" action="{{ route('shoppingList.update', $shoppingList->id) }}">
+                                            <form method="POST"
+                                                  action="{{ route('shoppingList.update', $shoppingList->id) }}">
                                                 @csrf
                                                 @method('PATCH')
                                                 <button type="submit" class="btn btn-primary">Complete</button>
@@ -90,4 +93,8 @@
             </div>
         </div>
     </div>
-    </section>
+</section>
+
+<div>
+    @include('components.footer')
+</div>

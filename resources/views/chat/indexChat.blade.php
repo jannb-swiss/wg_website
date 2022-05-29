@@ -1,8 +1,6 @@
-
-
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
         <div class="card">
             <div class="card-header">Chats</div>
             <div class="card-body">
@@ -13,5 +11,10 @@
             </div>
         </div>
     </div>
+
+    <div>
+        @include('components.footer')
+    </div>
+
 @endsection
 
