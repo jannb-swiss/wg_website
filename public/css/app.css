@@ -98,6 +98,11 @@ footer {
   border-bottom-width: 0px !important;
 }
 
+.margin-for-box {
+  margin-right: -4px !important;
+  margin-left: -4px !important;
+}
+
 .icon-box {
   font-size: 16px;
 }
