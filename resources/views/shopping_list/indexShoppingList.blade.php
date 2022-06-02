@@ -32,7 +32,7 @@
                 @endif
 
                 <div class="card">
-                    <div class="card-header">New shoppingList</div>
+                    <div class="card-header">Eintrag hinzufügen</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('shoppingList.store') }}">
@@ -40,8 +40,10 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="shopping_list_title">Title</label>
-                                <input id="shopping_list_title" name="shopping_list_title" type="text" maxlength="255" class="form-control{{ $errors->has('shopping_list_title') ? ' is-invalid' : '' }}" autocomplete="off" />
+                                <label for="shopping_list_title">Eintrag</label>
+                                <input id="shopping_list_title" name="shopping_list_title" type="text" maxlength="255"
+                                       class="form-control{{ $errors->has('shopping_list_title') ? ' is-invalid' : '' }}"
+                                       autocomplete="off"/>
 
                                 @if ($errors->has('shopping_list_title'))
                                     <span class="invalid-feedback" role="alert">
@@ -50,19 +52,19 @@
                                 @endif
 
                             </div>
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-primary mt-2">Hinzufügen</button>
                         </form>
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">shoppingLists</div>
+                <div class="card mt-3">
+                    <div class="card-header">Einkaufsliste</div>
 
                     <div class="card-body">
                         <table class="table table-striped">
                             @foreach ($shoppingLists as $shoppingList)
                                 <tr>
-                                    <td>
+                                    <td class="col-9">
 
                                         @if ($shoppingList->is_complete)
                                             <s>{{ $shoppingList->shopping_list_title }}</s>
@@ -71,12 +73,13 @@
                                         @endif
 
                                     </td>
-                                    <td class="text-right">
+                                    <td class="text-right col-3 text-align-right">
                                         @if (! $shoppingList->is_complete)
-                                            <form method="POST" action="{{ route('shoppingList.update', $shoppingList->id) }}">
+                                            <form method="POST"
+                                                  action="{{ route('shoppingList.update', $shoppingList->id) }}">
                                                 @csrf
                                                 @method('PATCH')
-                                                <button type="submit" class="btn btn-primary">Complete</button>
+                                                <button type="submit" class="btn btn-primary">löschen</button>
                                             </form>
                                         @endif
                                     </td>
@@ -90,4 +93,8 @@
             </div>
         </div>
     </div>
-    </section>
+</section>
+
+<div>
+    @include('components.footer')
+</div>

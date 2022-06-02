@@ -2,19 +2,48 @@
     text-align: left;
 }
 
-.parent{
+.text-align-right {
+    text-align: right;
+
+}
+
+.text-align-right-wg {
+
+    text-align: right;
+
+    @media screen and (max-width: 768px) {
+
+        text-align: left;
+
+    }
+}
+
+.parent {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     overflow: visible;
 }
 
-.component{
+.component {
     position: -webkit-sticky;
     position: sticky !important;
     bottom: 0;
 }
 
-.p-small{
+.p-small {
     font-size: x-small;
 }
+
+.border-bottom-table {
+    background-color: #f8f9fa !important;
+    border-bottom-width: 0px !important;
+}
+
+.margin-for-box {
+    margin-right: -4px !important;
+    margin-left: -4px !important;
+}
+
+
+

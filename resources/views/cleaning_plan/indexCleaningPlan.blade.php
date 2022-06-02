@@ -33,12 +33,12 @@
                 <div class="col-md-8">
 
                     <div class="card">
-                        <div class="card-header">Putzplan</div>
+                        <div class="card-header">Tasks</div>
                         <div class="card-body">
                             <table class="table">
                                 <thead>
-                                <th scope="col">Auftrags Nummer</th>
-                                <th scope="col">Putzplan</th>
+                                <th scope="col">Tasks</th>
+                                <th scope="col">Löschen</th>
                                 </thead>
                                 @foreach ($cleaningPlansUnsort as $cleaningPlan)
 
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-header">Benutzers</div>
+                    <div class="card-header">Putzplan</div>
                     <div class="card-body">
                         <table class="table" method="POST" action="{{ route('cleaningPlan.update') }}">
                             @csrf
