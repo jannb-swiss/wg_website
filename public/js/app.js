@@ -34315,7 +34315,7 @@ var render = function () {
         id: "btn-input",
         type: "text",
         name: "message",
-        placeholder: "Type your message here...",
+        placeholder: "Nachricht...",
       },
       domProps: { value: _vm.newMessage },
       on: {
@@ -34341,11 +34341,11 @@ var render = function () {
       _c(
         "button",
         {
-          staticClass: "btn btn-primary btn-sm",
+          staticClass: "btn btn-primary",
           attrs: { id: "btn-chat" },
           on: { click: _vm.sendMessage },
         },
-        [_vm._v("\n    Send\n  ")]
+        [_vm._v("\n    Senden\n  ")]
       ),
     ]),
   ])

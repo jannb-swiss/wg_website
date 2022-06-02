@@ -12,7 +12,7 @@
             <div class="col-md-8">
 
                 <div class="card">
-                    <div class="card-header">Benutzers</div>
+                    <div class="card-header">Users</div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -38,7 +38,7 @@
                 </div>
 
                 @if (session('status'))
-                    <div class="alert alert-success" role="alert">
+                    <div class="alert alert-success mt-1" role="alert">
                         {{ session('status') }}
                     </div>
                 @endif
@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-9">
-                                        <label for="finance_title">Item</label>
+                                        <label for="finance_title">Produkt</label>
                                         <input id="finance_title" name="finance_title" type="text" maxlength="255"
                                                class="form-control{{ $errors->has('finance_title') ? ' is-invalid' : '' }}"
                                                autocomplete="off"/>
@@ -79,7 +79,7 @@
                         <div class="card-body">
                             <table class="table">
                                 <thead>
-                                <th scope="col">Item</th>
+                                <th scope="col">Produkt</th>
                                 <th scope="col">Preis</th>
                                 <th scope="col" class="text-align-right me-2 pe-4">Löschen</th>
                                 </thead>
