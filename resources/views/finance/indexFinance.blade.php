@@ -19,8 +19,8 @@
                             <th scope="col">User</th>
                             <th scope="col" class="text-align-right">Preis</th>
                             </thead>
-                            @foreach ($finances_sums as $finances_sum)
                                 <tbody>
+                                @foreach ($finances_sums as $finances_sum)
                                 <tr>
                                     <td>
                                         {{ $finances_sum->name }}
@@ -29,8 +29,8 @@
                                         {{ $finances_sum->sum }}
                                     </td>
                                 </tr>
+                                @endforeach
                                 </tbody>
-                            @endforeach
                         </table>
                     </div>
 
@@ -83,20 +83,20 @@
                                 <th scope="col">Preis</th>
                                 <th scope="col" class="text-align-right me-2 pe-4">Löschen</th>
                                 </thead>
-                                @foreach ($finances as $finance)
                                     <tbody>
+                                    @foreach ($finances as $finance)
                                     <tr class="">
-                                        <td class="border-bottom-table">
+                                        <td>
                                             @if (! $finance->is_complete)
                                                 {{ $finance->finance_title }}
                                             @endif
                                         </td>
-                                        <td class="border-bottom-table">
+                                        <td>
                                             @if (! $finance->is_complete)
                                                 {{ $finance->item_price }}
                                             @endif
                                         </td>
-                                        <td class="text-right mt-2 text-align-right border-bottom-table">
+                                        <td class="text-right mt-2 text-align-right">
                                             <form method="POST"
                                                   action="{{ route('finance.destroy', $finance->id) }}">
                                                 @csrf
@@ -105,9 +105,9 @@
                                             </form>
                                         </td>
                                     </tr>
+                                    @endforeach
                                     </tbody>
 
-                                @endforeach
                             </table>
 
                             {{ $finances->links() }}

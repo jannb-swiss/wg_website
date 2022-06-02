@@ -31,12 +31,15 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
 
             $wgs = CleaningPlan::distinct('wg_id')->count();
+            $wgs = CleaningPlan::select('wg_id')->distinct()->get();
 
-            for($i = 1; $i <= $wgs; $i++) {
+
+
+            foreach($wgs as $wg) {
                 $cleaningPlan = CleaningPlan::select('cleaning_task', 'cleaning_plans.id', 'cleaning_plans.updated_at', 'cleaning_plans.update_trigger')
                     ->join('wg_groups', 'cleaning_plans.wg_id', '=', 'wg_groups.id')
-                    ->where(function ($query) use ($i) {
-                        $query->where('wg_id' , $i);
+                    ->where(function ($query) use ($wg) {
+                        $query->where('wg_id' , $wg);
                     })
                     ->orderBy('cleaning_plans.updated_at', 'asc')
                     ->first();
