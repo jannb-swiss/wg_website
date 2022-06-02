@@ -26,35 +26,15 @@ class FinanceController extends Controller
             ->orderByDesc('created_at')
             ->paginate(5);
 
-        //Zeigtm alle User an wert:string
-        $finances_users = User::select('name')->where('wg_group_id', Auth::user()->wgGroup()->firstOrFail()->id)->get();
-        //Summe Items alle Users durch 3 wert:int
-        $finances_sum = Finance::sum('item_price') / User::where('wg_group_id', Auth::user()->wgGroup()->firstOrFail()->id)->count();
-
-        //show all users in same wg like logget user
-        $a = User::where('wg_group_id', Auth::user()->wgGroup()->firstOrFail()->id)->get();
-
-        //show sum from logget user items
-        $b = Finance::where('user_id', Auth::user()->id)->sum('item_price');
-
-        /*        $finances_sums = DB::table('finances')
-                    ->selectRaw('sum(finances.item_price) as sum')
-                    ->join('users', 'finances.user_id', '=', 'users.id')
-                    ->where('wg_group_id', Auth::user()->wgGroup()->firstOrFail()->id)
-                    ->groupBy('user_id')
-                    ->get();*/
-
         $finances_sums = DB::table('finances')
             ->select('users.name', DB::raw('sum(finances.item_price) as sum'))
             ->join('users', 'finances.user_id', '=', 'users.id')
             ->where('wg_group_id', Auth::user()->wgGroup()->firstOrFail()->id)
+            ->where('finances.wg_id', Auth::user()->wgGroup()->firstOrFail()->id)
             ->groupBy('users.name')
             ->get();
 
-
-        /*return $finances_sums;*/
-
-                return view('finance.indexFinance', ['finances' => $finances, 'finances_sums' => $finances_sums]);
+        return view('finance.indexFinance', ['finances' => $finances, 'finances_sums' => $finances_sums]);
     }
 
     /**
@@ -75,15 +55,11 @@ class FinanceController extends Controller
      */
     public function store(Request $request)
     {
-        // validate the given request
         $data = $this->validate($request, [
             'finance_title' => 'required|string|max:255',
             'item_price' => 'required|numeric|max:255',
         ]);
 
-        $wg_id = $this->validate($request, [User::select('wg_group_id')->where('id', Auth::id())->get()]);
-
-        // create a new incomplete shoppingList with the given title
         $wg = Auth::user()->wgGroup()->firstOrFail()->id;
         $user = Auth::user();
 
@@ -96,10 +72,9 @@ class FinanceController extends Controller
         $finance->wgGroupFinance()->associate($wg);
         $finance->save();
 
-        // flash a success message to the session
         session()->flash('status', 'Das Item wurde hinzugefügt!');
+        session()->flash('statusError', 'Bitte trage das Produkt und für den Preis eine Zahl ein!');
 
-        // redirect to shoppingLists index
         return redirect('/finanzen');
     }
 
@@ -134,18 +109,7 @@ class FinanceController extends Controller
      */
     public function update(Finance $finance)
     {
-        // check if the authenticated user can complete the shoppingList
-        /*$this->authorize('complete', $shoppingList);*/
-
-        // mark the shoppingList as complete and save it
-        $finance->is_complete = true;
-        $finance->save();
-
-        // flash a success message to the session
-        session()->flash('status', 'Produkt wurde hinzugefügt!');
-
-        // redirect to shoppingLists index
-        return redirect('/finanzen');
+        //
     }
 
     /**

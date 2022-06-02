@@ -17,7 +17,7 @@
                         <table class="table">
                             <thead>
                             <th scope="col">User</th>
-                            <th scope="col">Preis</th>
+                            <th scope="col" class="text-align-right">Preis</th>
                             </thead>
                             @foreach ($finances_sums as $finances_sum)
                                 <tbody>
@@ -25,7 +25,7 @@
                                     <td>
                                         {{ $finances_sum->name }}
                                     </td>
-                                    <td>
+                                    <td class="text-align-right">
                                         {{ $finances_sum->sum }}
                                     </td>
                                 </tr>
@@ -42,6 +42,12 @@
                         {{ session('status') }}
                     </div>
                 @endif
+
+                @error(session('statusError'))
+                <div class="alert alert-danger mt-1" role="alert">
+                    <p>Bitte trage das Produkt und für den Preis eine Zahl ein!</p>
+                </div>
+                @enderror
 
                 <div class="card mt-3">
                     <div class="card-header">Produkt hinzufügen</div>
@@ -66,12 +72,6 @@
                                                autocomplete="off"/>
                                     </div>
                                 </div>
-                                @if ($errors->has('finance_title'))
-                                    <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('finance_title') }}</strong>
-                                </span>
-                                @endif
-
                             </div>
                             <button type="submit" class="btn btn-primary mt-2">Hinzufügen</button>
                         </form>
