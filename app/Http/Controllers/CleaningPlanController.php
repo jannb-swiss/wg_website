@@ -18,16 +18,16 @@ class CleaningPlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Schedule $schedule)
+    public function index()
     {
-        //Zeigt alle Users an
+        //Displays all users of the WG
         $allUsers = DB::table('users')
             ->select('name', 'users.id')
             ->join('wg_groups', 'users.wg_group_id', '=', 'wg_groups.id')
-            /*->join('cleaning_plans', 'wg_groups.id', '=', 'cleaning_plans.wg_id')*/
             ->where('wg_group_id', Auth::user()->wgGroup()->firstOrFail()->id)
             ->get();
 
+        //Shows how many users are in the WG
         $allUsersCount = DB::table('users')
             ->select('name')
             ->join('wg_groups', 'users.wg_group_id', '=', 'wg_groups.id')
@@ -35,7 +35,7 @@ class CleaningPlanController extends Controller
             ->where('wg_group_id', Auth::user()->wgGroup()->firstOrFail()->id)
             ->get()->count();
 
-        //zeigt all Items an
+        //Displays all entries of the WG sorted by updated_at
         $cleaningPlans = DB::table('cleaning_plans')
             ->select('cleaning_task', 'cleaning_plans.id', 'cleaning_plans.updated_at')
             ->join('wg_groups', 'cleaning_plans.wg_id', '=', 'wg_groups.id')
@@ -43,17 +43,20 @@ class CleaningPlanController extends Controller
             ->orderBy('cleaning_plans.updated_at', 'asc')
             ->get();
 
+        //Displays all entries of the WG
         $cleaningPlansUnsort = DB::table('cleaning_plans')
             ->select('cleaning_task', 'cleaning_plans.id', 'cleaning_plans.updated_at')
             ->join('wg_groups', 'cleaning_plans.wg_id', '=', 'wg_groups.id')
             ->where('wg_id', Auth::user()->wgGroup()->firstOrFail()->id)
             ->get();
 
+        //Shows how many entries the cleaning schedule has
         $cleaningPlansCount = DB::table('cleaning_plans')
             ->select('cleaning_task')
             ->join('wg_groups', 'cleaning_plans.wg_id', '=', 'wg_groups.id')
             ->where('wg_id', Auth::user()->wgGroup()->firstOrFail()->id)
             ->get()->count();
+
 
         $maxLength = $cleaningPlansCount > $allUsersCount ? $cleaningPlansCount : $allUsersCount;
 
@@ -62,9 +65,8 @@ class CleaningPlanController extends Controller
         $result = $merge->all();
 
 
-
-
         return view('cleaning_plan.indexCleaningPlan', compact(['cleaningPlans', 'maxLength', 'allUsers', 'cleaningPlansCount', 'allUsersCount', 'cleaningPlansUnsort']));
+
     }
 
     /**
@@ -137,7 +139,7 @@ class CleaningPlanController extends Controller
      */
     public function update(Schedule $schedule)
     {
-
+        //
     }
 
     /**

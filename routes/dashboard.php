@@ -50,7 +50,6 @@ Route::post('/messages', 'ChatController@sendMessage');
 
 Route::get('/putzplan', 'CleaningPlanController@index')->name('');
 Route::post('/putzplan', 'CleaningPlanController@store')->name('cleaningPlan.store');
-Route::patch('/putzplan', 'CleaningPlanController@update')->name('cleaningPlan.update');
 Route::delete('/putzplan/{cleaningPlan}', 'CleaningPlanController@destroy')->name('cleaningPlan.destroy');
 
 

@@ -23,102 +23,81 @@
 
 <section class="container-lg mt-5">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-5">
             <div class="col-md-8">
 
                 @if ($allUsersCount > $cleaningPlansCount)
                     <strong>Erstelle gleiche viele PutzItems oder mehr wie Users existieren!</strong>
                 @endif
 
-                <div class="col-md-8">
-
-                    <div class="card">
-                        <div class="card-header">Tasks</div>
-                        <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                <th scope="col">Tasks</th>
-                                <th scope="col">Löschen</th>
-                                </thead>
-                                @foreach ($cleaningPlansUnsort as $cleaningPlan)
-
-                                    <tbody>
-                                    <tr>
-
-                                        <td>
-                                            {{ $cleaningPlan->cleaning_task }}
-                                        </td>
-                                        <td class="text-right mt-2">
-                                                <form method="POST"
-                                                      action="{{ route('cleaningPlan.destroy', $cleaningPlan->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-primary">Löschen</button>
-                                                </form>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                @endforeach
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
-
                 <div class="card">
                     <div class="card-header">Putzplan</div>
                     <div class="card-body">
-                        <table class="table" method="POST" action="{{ route('cleaningPlan.update') }}">
-                            @csrf
-                            @method('PATCH')
+                        <table class="table">
                             <thead>
                             <th scope="col">Users</th>
                             <th scope="col">Tasks</th>
                             </thead>
-                            {{--@for($i = 0; $i < $maxLength; ++$i)--}}
-
-                            @foreach ($allUsers as $au => $test)
                                 <tbody>
+                                @foreach ($allUsers as $au => $test)
                                 <tr>
                                     <td>
-                                        {{--{{$allUsers->name}}--}}
                                         {{ $test->name }}
                                     </td>
                                     <td>
-                                        {{--{{$cleaningPlan->cleaning_task }}--}}
                                         @if(!empty($cleaningPlans[$au]->cleaning_task))
                                             {{ $cleaningPlans[$au]->cleaning_task }}
                                         @endif
                                     </td>
                                 </tr>
+                                @endforeach
                                 </tbody>
-                            @endforeach
-                            {{--@endfor--}}
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="card mt-3">
-            <div class="card-header">Produkt hinzufügen</div>
+                <div class="card mt-3">
+                    <div class="card-header">Tasks</div>
+                    <div class="card-body">
 
-            <div class="card-body">
-                <form method="POST" action="{{ route('cleaningPlan.store') }}">
+                        <form method="POST" action="{{ route('cleaningPlan.store') }}">
+                            @csrf
+                            <div class="form-group">
+                                <div class="col-12">
+                                    <label for="cleaning_task">Task hinzufügen</label>
+                                    <input id="cleaning_task" name="cleaning_task" type="text" maxlength="255"
+                                           class="form-control{{ $errors->has('cleaning_task') ? ' is-invalid' : '' }}"
+                                           autocomplete="off"/>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Hinzufügen</button>
+                        </form>
 
-                    @csrf
-
-                    <div class="form-group">
-                        <div class="row">
-                            <label for="cleaning_task">Item</label>
-                            <input id="cleaning_task" name="cleaning_task" type="text" maxlength="255"
-                                   class="form-control{{ $errors->has('cleaning_task') ? ' is-invalid' : '' }}"
-                                   autocomplete="off"/>
-                        </div>
-
+                        <table class="table mt-3">
+                            <thead>
+                            <th scope="col">Tasks</th>
+                            <th scope="col" class="text-align-right pe-4">Löschen</th>
+                            </thead>
+                                <tbody>
+                                @foreach ($cleaningPlansUnsort as $cleaningPlan)
+                                <tr>
+                                    <td>
+                                        {{ $cleaningPlan->cleaning_task }}
+                                    </td>
+                                    <td class="text-align-right mt-2">
+                                        <form method="POST"
+                                              action="{{ route('cleaningPlan.destroy', $cleaningPlan->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-primary">Löschen</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                        </table>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-2">Hinzufügen</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
