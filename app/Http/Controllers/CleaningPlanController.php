@@ -57,29 +57,16 @@ class CleaningPlanController extends Controller
             ->where('wg_id', Auth::user()->wgGroup()->firstOrFail()->id)
             ->get()->count();
 
-        $wgs = CleaningPlan::select('wg_id')->distinct()->get();
-        $wgs2 = CleaningPlan::distinct('wg_id')->count();
 
-        /*return $wgs;*/
+        $maxLength = $cleaningPlansCount > $allUsersCount ? $cleaningPlansCount : $allUsersCount;
 
-        foreach ($wgs as $wg) {
-            echo $wg->wg_id;
-        }
+        $merge = $allUsers->merge($cleaningPlans);
 
-        /*        $Test = CleaningPlan::select('wg_id')->distinct()->get();
-
-                return $Test;
-
-                $maxLength = $cleaningPlansCount > $allUsersCount ? $cleaningPlansCount : $allUsersCount;
-
-                $merge = $allUsers->merge($cleaningPlans);
-
-                $result = $merge->all();
+        $result = $merge->all();
 
 
+        return view('cleaning_plan.indexCleaningPlan', compact(['cleaningPlans', 'maxLength', 'allUsers', 'cleaningPlansCount', 'allUsersCount', 'cleaningPlansUnsort']));
 
-
-                return view('cleaning_plan.indexCleaningPlan', compact(['cleaningPlans', 'maxLength', 'allUsers', 'cleaningPlansCount', 'allUsersCount', 'cleaningPlansUnsort']));*/
     }
 
     /**

@@ -42,7 +42,7 @@
                             <a class="nav-link" href="/finanzen">Finanzen</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/putzplan">Putplan</a>
+                            <a class="nav-link" href="/putzplan">Putzplan</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/chat">Chat</a>
