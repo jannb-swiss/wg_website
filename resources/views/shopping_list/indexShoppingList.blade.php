@@ -31,14 +31,18 @@
                     </div>
                 @endif
 
-                <div class="card">
-                    <div class="card-header">Eintrag hinzufügen</div>
+                @if (session('status_delete'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('status_delete') }}
+                    </div>
+                @endif
 
+                <div class="card mt-3">
+                    <div class="card-header">Einkaufsliste</div>
                     <div class="card-body">
+
                         <form method="POST" action="{{ route('shoppingList.store') }}">
-
                             @csrf
-
                             <div class="form-group">
                                 <label for="shopping_list_title">Eintrag</label>
                                 <input id="shopping_list_title" name="shopping_list_title" type="text" maxlength="255"
@@ -54,14 +58,9 @@
                             </div>
                             <button type="submit" class="btn btn-primary mt-2">Hinzufügen</button>
                         </form>
-                    </div>
-                </div>
 
-                <div class="card mt-3">
-                    <div class="card-header">Einkaufsliste</div>
 
-                    <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table mt-3">
                             @foreach ($shoppingLists as $shoppingList)
                                 <tr>
                                     <td class="col-9">
@@ -76,10 +75,10 @@
                                     <td class="text-right col-3 text-align-right">
                                         @if (! $shoppingList->is_complete)
                                             <form method="POST"
-                                                  action="{{ route('shoppingList.update', $shoppingList->id) }}">
+                                                  action="{{ route('shoppingList.destroy', $shoppingList->id) }}">
                                                 @csrf
-                                                @method('PATCH')
-                                                <button type="submit" class="btn btn-primary">löschen</button>
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-primary">Löschen</button>
                                             </form>
                                         @endif
                                     </td>

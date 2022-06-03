@@ -38,13 +38,19 @@
                 </div>
 
                 @if (session('status'))
-                    <div class="alert alert-success mt-1" role="alert">
+                    <div class="alert alert-success mt-2" role="alert">
                         {{ session('status') }}
                     </div>
                 @endif
 
+                @if (session('status_delete'))
+                    <div class="alert alert-danger mt-2" role="alert">
+                        {{ session('status_delete') }}
+                    </div>
+                @endif
+
                 @error(session('statusError'))
-                <div class="alert alert-danger mt-1" role="alert">
+                <div class="alert alert-danger mt-2" role="alert">
                     <p>Bitte trage das Produkt und für den Preis eine Zahl ein!</p>
                 </div>
                 @enderror

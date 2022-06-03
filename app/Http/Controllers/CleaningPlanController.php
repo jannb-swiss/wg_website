@@ -87,12 +87,11 @@ class CleaningPlanController extends Controller
      */
     public function store(Request $request)
     {
-        // validate the given request
+
         $data = $this->validate($request, [
             'cleaning_task' => 'required|string|max:255',
         ]);
 
-        // create a new incomplete shoppingList with the given title
         $wg = Auth::user()->wgGroup()->firstOrFail()->id;
 
         $cleaningPlan = CleaningPlan::create([
@@ -101,11 +100,10 @@ class CleaningPlanController extends Controller
         $cleaningPlan->wgGroupCleaningPlan()->associate($wg);
         $cleaningPlan->save();
 
-        // flash a success message to the session
         session()->flash('status', 'Das Item wurde hinzugefügt!');
 
-        // redirect to shoppingLists index
         return redirect('/putzplan');
+        
     }
 
     /**
@@ -151,6 +149,9 @@ class CleaningPlanController extends Controller
     public function destroy(CleaningPlan $cleaningPlan)
     {
         $cleaningPlan->delete();
+
+        session()->flash('status_delete', 'Der Task wurde gelöscht!');
+
         return redirect('/putzplan');
     }
 }

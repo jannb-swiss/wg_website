@@ -37,7 +37,7 @@ Route::get('/indexWG/{id}/edit', 'WgGroupController@edit')->name('');
 
 Route::get('/einkaufsliste', 'ShoppingListController@index')->name('');
 Route::post('/einkaufsliste', 'ShoppingListController@store')->name('shoppingList.store');
-Route::patch('/einkaufsliste/{shoppingList}', 'ShoppingListController@update')->name('shoppingList.update');
+Route::delete('/einkaufsliste/{shoppingList}', 'ShoppingListController@destroy')->name('shoppingList.destroy');
 
 Route::get('/finanzen', 'FinanceController@index')->name('');
 Route::post('/finanzen', 'FinanceController@store')->name('finance.store');

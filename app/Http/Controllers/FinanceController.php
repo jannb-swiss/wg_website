@@ -72,7 +72,7 @@ class FinanceController extends Controller
         $finance->wgGroupFinance()->associate($wg);
         $finance->save();
 
-        session()->flash('status', 'Das Item wurde hinzugefügt!');
+        session()->flash('status', 'Das Produkt wurde hinzugefügt!');
         session()->flash('statusError', 'Bitte trage das Produkt und für den Preis eine Zahl ein!');
 
         return redirect('/finanzen');
@@ -121,6 +121,9 @@ class FinanceController extends Controller
     public function destroy(Finance $finance)
     {
         $finance->delete();
+
+        session()->flash('status_delete', 'Das Produkt wurde gelöscht!');
+
         return redirect('/finanzen');
     }
 }
