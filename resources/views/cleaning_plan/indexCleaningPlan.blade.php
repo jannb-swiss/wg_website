@@ -56,6 +56,18 @@
                     </div>
                 </div>
 
+                    @if (session('status'))
+                        <div class="alert alert-success mt-2" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    @if (session('status_delete'))
+                        <div class="alert alert-danger mt-2" role="alert">
+                            {{ session('status_delete') }}
+                        </div>
+                    @endif
+
                 <div class="card mt-3">
                     <div class="card-header">Tasks</div>
                     <div class="card-body">
