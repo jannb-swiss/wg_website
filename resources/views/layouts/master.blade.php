@@ -2,6 +2,7 @@
 <html>
 <head>
 
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('/favicon/favicon-32x32.png') }}">
     <link rel="stylesheet" href="/css/app.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
 
