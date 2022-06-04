@@ -48,7 +48,7 @@
 
                             <div class="row mb-3">
                                 <label for="email"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('Email Adresse') }}</label>
+                                       class="col-md-4 col-form-label text-md-end">{{ __('E-Mail-Adresse') }}</label>
 
                                 @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
 
