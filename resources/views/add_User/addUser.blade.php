@@ -40,13 +40,12 @@
                 @endif
 
                 <div class="card-body">
-                    <p>Gib die EMail-Adresse ein um einen User hinzuzufügen. Der User muss jedoch bereits registriert
-                        sein.</p>
+                    <p>Gib die E-Mail-Adresse eins Users ein, um ihn hinzuzufügen. <strong>Hinweis: Der User muss registriert sein!</strong></p>
                     <form method="POST" action="{{ route('addUser') }}">
                         @csrf
                         <div class="row mb-3">
                             <label for="email"
-                                   class="col-md-4 col-form-label text-md-end">Email</label>
+                                   class="col-md-4 col-form-label text-md-end">E-Mail-Adresse</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email"
@@ -63,7 +62,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Einladen
+                                    Hinzufügen
                                 </button>
                             </div>
                         </div>
