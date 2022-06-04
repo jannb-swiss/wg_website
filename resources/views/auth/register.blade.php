@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <div class="flash-message">
+                <div class="flash-message mt-2">
                     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                         @if(Session::has('alert-' . $msg))
                             <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#"
@@ -50,6 +50,8 @@
                                 <label for="email"
                                        class="col-md-4 col-form-label text-md-end">{{ __('Email Adresse') }}</label>
 
+                                @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
+
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                            class="form-control @error('email') is-invalid @enderror" name="email"
@@ -60,6 +62,9 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+
+                                    @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
+
                                 </div>
                             </div>
 
