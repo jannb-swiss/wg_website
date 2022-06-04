@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <div class="flash-message">
+                <div class="flash-message mt-2">
                     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                         @if(Session::has('alert-' . $msg))
                             <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#"

@@ -7,6 +7,7 @@ use App\Http\Controllers\MailController;
 use App\Models\WgGroup;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -65,21 +66,38 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    public function register(Request $request)
+    public function register(Request $request, Validator $validator)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->verification_code = sha1(time());
-        $user->save();
 
-        if($user != null){
+//        if ($validator->fails()) {
+//            return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));
+//        }
+//        else {
+//            $user = new User();
+//            $user->name = $request->name;
+//            $user->email = $request->email;
+//            $user->password = Hash::make($request->password);
+//            $user->verification_code = sha1(time());
+//            $user->save();
+//
+//            MailController::sendSignupEmail($user->name, $user->email, $user->verification_code);
+//            return redirect()->back()->with(session()->flash('alert-success', 'Dein User wurde erstellt. Bitte bestätige zuerst deine E-Mail-Adresse!'));
+//        }
+
+        $users = User::where('email', '=', $request->input('email'))->first();
+        if ($users === null) {
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->verification_code = sha1(time());
+            $user->save();
             MailController::sendSignupEmail($user->name, $user->email, $user->verification_code);
-            return redirect()->back()->with(session()->flash('alert-success', 'Your account has been created. Please check email for verification link.'));
+            return redirect()->back()->with(session()->flash('alert-success', 'Dein User wurde erstellt. Bitte bestätige zuerst deine E-Mail-Adresse!'));
+        } else {
+            return redirect()->back()->with(session()->flash('alert-danger', 'Deine E-Mail-Adresse wurde schon einmal verwendet!'));
         }
 
-        return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));
     }
 
     public function verifyUser() {
@@ -88,9 +106,9 @@ class RegisterController extends Controller
         if($user != null) {
             $user->is_verified = 1;
             $user->save();
-            return redirect()->route('login')->with(session()->flash('alert-success', 'your account is verified: Pleas login'));
+            return redirect()->route('login')->with(session()->flash('alert-success', 'Du hast deine E-Mail-Adresse bestätigt und kannst dich jetzt anmelden!'));
         }
 
-        return redirect()->route('login')->with(session()->flash('alert-danger', 'Something went wrong:('));
+        return redirect()->route('login')->with(session()->flash('alert-danger', 'Etwas ist schiefgelaufen!'));
     }
 }
