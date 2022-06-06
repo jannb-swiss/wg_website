@@ -5,7 +5,7 @@
 @include('layouts.hero', [
 'heroTitle' => 'Happy Living',
 'heroSubtitle' => 'Make living great again',
-'heroImage' => '/images/home_img.jpg',
+'heroImage' => '/images/img_home.jpg',
 'heroImageTitle' => 'Happy Lifing'
 ])
 

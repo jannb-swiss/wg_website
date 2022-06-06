@@ -5,7 +5,7 @@
     @include('layouts.hero', [
     'heroTitle' => 'WG Website',
     'heroSubtitle' => 'Zusammen Leben',
-    'heroImage' => '/images/img_sofa.jpg',
+    'heroImage' => '/images/img_home.jpg',
     'heroImageTitle' => 'WG-Website'
 ])
 

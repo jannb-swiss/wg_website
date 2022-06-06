@@ -18,7 +18,8 @@
 @include('layouts.hero', [
 'heroTitle' => 'Happy Living',
 'heroSubtitle' => 'Make living great again',
-'heroImageTitle' => 'WG-Website'
+    'heroImage' => '/images/img_clean_2.jpg',
+    'heroImageTitle' => 'WG-Website'
 ])
 
 <section class="container-lg mt-5">

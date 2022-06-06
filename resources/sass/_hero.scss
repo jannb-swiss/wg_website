@@ -22,11 +22,9 @@
         left: 0;
         height: 100%;
         width: 100%;
-        // filter: brightness(60%); // IE can't handle this
         background-size: cover;
         background-position: top center;
 
-        // Filter, so IE can see this too
         &:before {
             position: absolute;
             top: 0;
