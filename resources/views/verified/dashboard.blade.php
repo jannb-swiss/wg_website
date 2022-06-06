@@ -24,7 +24,7 @@
 
 <div class="float-box mt-4">
     <a href="/createWG" class="nav-link px-2 footer-font">WG erstellen</a>
-    <a href="/indexWG" class="nav-link px-2 footer-font">WG</a>
+    <a href="/wg" class="nav-link px-2 footer-font">WG</a>
     <a href="/modifyUser" class="nav-link px-2 footer-font">User Bearbeiten</a>
     <a href="/chat" class="nav-link px-2 footer-font">Chat</a>
 </div>

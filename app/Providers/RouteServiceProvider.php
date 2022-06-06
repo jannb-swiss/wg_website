@@ -20,7 +20,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
 
-    public const HOME = '/indexWG';
+    public const HOME = '/wg';
 
 
     /**

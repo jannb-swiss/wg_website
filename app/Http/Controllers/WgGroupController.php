@@ -25,10 +25,10 @@ class WgGroupController extends Controller
         $User = Auth::user();
 
         if($wgGroup->isEmpty()){
-            return view('verified.createWgGroupe');
+            return view('wg.createWgGroupe');
         }else{
             $wgName = Auth::user()->wgGroup()->firstOrFail()->wg_name;
-            return View::make('verified.indexWgGroupe', ['wgName' => $wgName, 'User' => $User]);
+            return View::make('wg.indexWgGroupe', ['wgName' => $wgName, 'User' => $User]);
         }
     }
 
@@ -39,7 +39,7 @@ class WgGroupController extends Controller
      */
     public function create(Data $data)
     {
-        return view('verified.createWgGroupe');
+        return view('wg.createWgGroupe');
     }
 
     /**
@@ -55,7 +55,7 @@ class WgGroupController extends Controller
             ]);
             $wg->users()->save(Auth::user());
 
-            return redirect('/indexWG');
+            return redirect('/wg');
     }
 
     /**
@@ -67,7 +67,7 @@ class WgGroupController extends Controller
     public function show($id)
     {
         $wgGroup = WgGroup::where('id', Auth::id())->findOrFail();
-        return view ('verified.indexWgGroupe', ['wgGroup' => $wgGroup]);
+        return view ('wg.indexWgGroupe', ['wgGroup' => $wgGroup]);
     }
 
     /**
@@ -97,7 +97,7 @@ class WgGroupController extends Controller
             $userAuth->save();
         }
 
-        return redirect('/indexWG');
+        return redirect('/wg');
     }
 
     /**
