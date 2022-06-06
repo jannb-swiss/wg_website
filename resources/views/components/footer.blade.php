@@ -4,9 +4,9 @@
             <li class="nav-item">
                 <a href="/" class="nav-link px-2 footer-font">home</a>
             </li>
-<!--            <li class="nav-item">
-                <a href="/about" class="nav-link px-2 footer-font">about</a>
-            </li>-->
+            <li class="nav-item">
+                <a href="/datenschutz" class="nav-link px-2 footer-font">datenschutz</a>
+            </li>
             <li class="nav-item">
                 <a href="/login" class="nav-link px-2 footer-font">login</a>
             </li>

@@ -11,9 +11,9 @@ class PageController
         return view('pages.home');
     }
 
-    public function about()
+    public function privacy()
     {
-        return view('pages.about');
+        return view('pages.privacy');
     }
 
     public function login()
@@ -21,23 +21,4 @@ class PageController
         return view('pages.login');
     }
 
-    public function chat()
-    {
-        return view('side-pages.chat');
-    }
-
-    public function clean()
-    {
-        return view('side-pages.clean');
-    }
-
-    public function finance()
-    {
-        return view('side-pages.finance');
-    }
-
-    public function shopping()
-    {
-        return view('side-pages.shopping');
-    }
 }
