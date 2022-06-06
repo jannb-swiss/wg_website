@@ -9,7 +9,7 @@
     'heroImageTitle' => 'WG-Website'
 ])
 
-    <section class="container-lg mt-5 section me-2">
+    <section class="container-lg mt-5 section">
         <h1>Datenschutzerklärung</h1>
         <p>WG-Website (nachfolgend als „wir“ oder „WG-Website“ bezeichnet) ist der respektvolle Umgang mit
             personenbezogenen Daten sehr wichtig. Wir achten auf eine dem Zweck angemessene Bearbeitung der Daten, die

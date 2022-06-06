@@ -17,7 +17,7 @@ use App\Http\Controllers\PageController;
 Auth::routes();
 
 Route::get('/', 'PageController@home')->name('home');
-Route::get('/about', 'PageController@about')->name('about');
+Route::get('/datenschutz', 'PageController@privacy')->name('privacy');
 Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/verify', 'Auth\RegisterController@verifyUser')->name('verify.user');
 Route::get('/register', 'Auth\RegisterController@register')->name('register');
