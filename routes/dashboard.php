@@ -26,14 +26,14 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/modifyUser','UserController@index')->name('');
 
-Route::get('/indexWG', 'WgGroupController@index')->name('');
-Route::patch('/indexWG', 'WgGroupController@update')->name('wgGroup.update');
+Route::get('/wg', 'WgGroupController@index')->name('');
+Route::patch('/wg', 'WgGroupController@update')->name('wgGroup.update');
 Route::post('/createWG', 'WgGroupController@store')->name('wgGroup.store');
 Route::get('/createWG', 'WgGroupController@create')->name('');
-Route::get('/indexWG/{id}', 'WgGroupController@show')->name('');
-Route::put('/indexWG/{id}', 'WgGroupController@update')->name('');
-Route::delete('/indexWG/{id}', 'WgGroupController@destroy')->name('');
-Route::get('/indexWG/{id}/edit', 'WgGroupController@edit')->name('');
+Route::get('/wg/{id}', 'WgGroupController@show')->name('');
+Route::put('/wg/{id}', 'WgGroupController@update')->name('');
+Route::delete('/wg/{id}', 'WgGroupController@destroy')->name('');
+Route::get('/wg/{id}/edit', 'WgGroupController@edit')->name('');
 
 Route::get('/einkaufsliste', 'ShoppingListController@index')->name('');
 Route::post('/einkaufsliste', 'ShoppingListController@store')->name('shoppingList.store');
