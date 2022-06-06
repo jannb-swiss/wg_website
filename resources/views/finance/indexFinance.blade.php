@@ -7,11 +7,12 @@
     'heroImageTitle' => 'WG-Website'
 ])
 
-<section class="container-lg mt-5">
+<section class="container-lg mt-3">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
+                <p>Hier kannst du deine Ausgaben eintragen. Füge unten ein Produkt mit dem Preis hinzu. Die gesamten Ausgaben
+                    jedes WG-Bewohners werden angezeigt.</p>
                 <div class="card">
                     <div class="card-header">Users</div>
                     <div class="card-body">
@@ -20,8 +21,8 @@
                             <th scope="col">User</th>
                             <th scope="col" class="text-align-right">Preis</th>
                             </thead>
-                                <tbody>
-                                @foreach ($finances_sums as $finances_sum)
+                            <tbody>
+                            @foreach ($finances_sums as $finances_sum)
                                 <tr>
                                     <td>
                                         {{ $finances_sum->name }}
@@ -30,8 +31,8 @@
                                         {{ $finances_sum->sum }}
                                     </td>
                                 </tr>
-                                @endforeach
-                                </tbody>
+                            @endforeach
+                            </tbody>
                         </table>
                     </div>
 
@@ -90,8 +91,8 @@
                                 <th scope="col">Preis</th>
                                 <th scope="col" class="text-align-right me-2 pe-4">Löschen</th>
                                 </thead>
-                                    <tbody>
-                                    @foreach ($finances as $finance)
+                                <tbody>
+                                @foreach ($finances as $finance)
                                     <tr class="">
                                         <td>
                                             @if (! $finance->is_complete)
@@ -112,11 +113,9 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    @endforeach
-                                    </tbody>
-
+                                @endforeach
+                                </tbody>
                             </table>
-
                             {{ $finances->links() }}
                         </div>
                     </div>

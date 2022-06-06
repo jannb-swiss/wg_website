@@ -22,14 +22,16 @@
     'heroImageTitle' => 'WG-Website'
 ])
 
-<section class="container-lg mt-5">
+<section class="container-lg mt-3">
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-8">
+                    <p>Hier kannst du einen Putzplan erstellen. Füge unten einen Task ein und er wird einem WG-Mitglied
+                        zugewiesen. Immer nach einer Woche bekommt jedes WG-Mitglied einen neuen Task zum Putzen.</p>
 
-                @if ($allUsersCount > $cleaningPlansCount)
-                    <strong>Erstelle gleiche viele PutzItems oder mehr wie Users existieren!</strong>
-                @endif
+                    @if ($allUsersCount > $cleaningPlansCount)
+                        <strong>Hinweis: Achte darauf das du mindestens so viele Tasks wie WG-Mitlieder hast.</strong>
+                    @endif
 
                 <div class="card">
                     <div class="card-header">Putzplan</div>
@@ -39,8 +41,8 @@
                             <th scope="col">Users</th>
                             <th scope="col">Tasks</th>
                             </thead>
-                                <tbody>
-                                @foreach ($allUsers as $au => $test)
+                            <tbody>
+                            @foreach ($allUsers as $au => $test)
                                 <tr>
                                     <td>
                                         {{ $test->name }}
@@ -51,23 +53,23 @@
                                         @endif
                                     </td>
                                 </tr>
-                                @endforeach
-                                </tbody>
+                            @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
 
-                    @if (session('status'))
-                        <div class="alert alert-success mt-2" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                @if (session('status'))
+                    <div class="alert alert-success mt-2" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
 
-                    @if (session('status_delete'))
-                        <div class="alert alert-danger mt-2" role="alert">
-                            {{ session('status_delete') }}
-                        </div>
-                    @endif
+                @if (session('status_delete'))
+                    <div class="alert alert-danger mt-2" role="alert">
+                        {{ session('status_delete') }}
+                    </div>
+                @endif
 
                 <div class="card mt-3">
                     <div class="card-header">Tasks</div>
@@ -91,8 +93,8 @@
                             <th scope="col">Tasks</th>
                             <th scope="col" class="text-align-right pe-4">Löschen</th>
                             </thead>
-                                <tbody>
-                                @foreach ($cleaningPlansUnsort as $cleaningPlan)
+                            <tbody>
+                            @foreach ($cleaningPlansUnsort as $cleaningPlan)
                                 <tr>
                                     <td>
                                         {{ $cleaningPlan->cleaning_task }}
@@ -106,8 +108,8 @@
                                         </form>
                                     </td>
                                 </tr>
-                                @endforeach
-                                </tbody>
+                            @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>

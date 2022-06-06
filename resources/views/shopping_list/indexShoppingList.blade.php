@@ -22,10 +22,11 @@
     'heroImageTitle' => 'WG-Website'
 ])
 
-<section class="container-lg mt-5">
+<section class="container-lg mt-3">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <p>Trage hier ein, was in der WG fehlt. Wurde es gekauft, kannst du es wieder aus der Liste entfernen.</p>
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}

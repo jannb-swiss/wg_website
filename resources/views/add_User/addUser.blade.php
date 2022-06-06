@@ -18,7 +18,7 @@
 @include('layouts.hero', [
 'heroTitle' => 'User hinzufügen',
 'heroSubtitle' => 'Registrieren',
-'heroImage' => '/images/home_img.jpg',
+'heroImage' => '/images/img_home.jpg',
 'heroImageTitle' => 'WG-Website'
 ])
 
@@ -40,7 +40,7 @@
                 @endif
 
                 <div class="card-body">
-                    <p>Gib die E-Mail-Adresse eins Users ein, um ihn hinzuzufügen. <strong>Hinweis: Der User muss registriert sein!</strong></p>
+                    <p>Gib die E-Mail-Adresse eins Users ein, um ihn der WG hinzuzufügen. <strong>Hinweis: Der User muss registriert sein!</strong></p>
                     <form method="POST" action="{{ route('addUser') }}">
                         @csrf
                         <div class="row mb-3">
