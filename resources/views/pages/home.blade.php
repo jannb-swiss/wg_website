@@ -11,7 +11,7 @@
 
     <section class="container-lg mt-5 section">
 
-        <h2>"How we live is what makes us real!"</h2>
+        <h2>Organisiere dein WG-Leben im Internet</h2>
         <h4 class="mt-2 mb-2">Das WG-Leben ist schön, aber nicht immer leicht. WG-Website hilft euch bei der Organisation von allem was im Haushalt so zu erledigen ist. Damit mehr Energie und Zeit für die wichtigen Dinge bleibt. <a href="/register" class="href-box">Jetzt registrieren!<i class="icon-box bi bi-caret-right"></i></a></h4>
 
         <div class="float-box row mb-1 margin-for-box">
