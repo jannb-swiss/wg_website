@@ -3,10 +3,10 @@
 @section('content')
 
     @include('layouts.hero', [
-    'heroTitle' => 'Happy Living',
+    'heroTitle' => 'WG-Website',
     'heroSubtitle' => 'Login',
     'heroImage' => '/images/img_home.jpg',
-    'heroImageTitle' => 'Happy Lifing'
+    'heroImageTitle' => 'WG-Website'
 ])
     <div class="container">
         <div class="row justify-content-center">
