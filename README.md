@@ -67,13 +67,3 @@ Wechsle zum Repository Verzeichnis
 <h4>Scheduler für den Putzplan testen</h4>
 * trigger: php artisan schedule:run<br>
 * auto: php artisan schedule:work<br>
-
-<h2>Testing auf dem USB-Stick (Für das Testen empfehle ich das GitHub-Repository zu nehmen!)</h2>
-
-<h4>E-Mail senden</h4>
-* gehe zu resources/views/mail/signup-email.blade.php
-* Folgende zwei Zeilen austauschen
-```html
-<!--<a href="http://127.0.0.1:8000/verify?code={{$email_data['verification_code']}}">Jetzt bestätigen!(for testing!)</a>-->
-<a href="https://www.wg-website.com/verify?code={{$email_data['verification_code']}}">Jetzt bestätigen!</a>
-```
