@@ -76,7 +76,7 @@
                     <h2 class="">Einkaufsliste</h2>
                     <div class="row">
                         <div class="col-md-8 col-xs-12">
-                            <h5 class="">Erstellt einen Einkaufsliste</h5>
+                            <h5 class="">Erstellt eine Einkaufsliste</h5>
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,11 @@ window.Vue = require('vue').default;
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
+/**
+*Inspired by https://pusher.com/tutorials/how-to-build-a-chat-app-with-vue-js-and-laravel/
+*and may contain individual code parts of it.
+*/
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
@@ -31,11 +36,9 @@ Vue.component('chat-form', require('./components/ChatForm.vue').default);
 
 const app = new Vue({
     el: '#app',
-    //Store chat messages for display in this array.
     data: {
         messages: []
     },
-    //Upon initialisation, run fetchMessages().
     created() {
         this.fetchMessages();
         window.Echo.private('chat')
@@ -48,17 +51,12 @@ const app = new Vue({
     },
     methods: {
         fetchMessages() {
-            //GET request to the messages route in our Laravel server to fetch all the messages
             axios.get('/messages').then(response => {
-                //Save the response in the messages array to display on the chat view
                 this.messages = response.data;
             });
         },
-        //Receives the message that was emitted from the ChatForm Vue component
         addMessage(message) {
-            //Pushes it to the messages array
             this.messages.push(message);
-            //POST request to the messages route with the message data in order for our Laravel server to broadcast it.
             axios.post('/messages', message).then(response => {
                 console.log(response.data);
             });

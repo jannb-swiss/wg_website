@@ -76,6 +76,11 @@ Wechsle zum Repository Verzeichnis
 * trigger: php artisan schedule:run<br>
 * auto: php artisan schedule:work<br>
 
+<h2>Testing auf dem USB-Stick</h2>
 
-
+<h4>E-Mail senden (Für das Testen empfehle das GitHub-Repository zu nehmen!) </h4>
+* gehe zu resources/views/mail/signup-email.blade.php
+* Folgende zwei Zeilen austauschen
+* <!--<a href="http://127.0.0.1:8000/verify?code={{$email_data['verification_code']}}">Jetzt bestätigen!(for testing!)</a>-->
+* <a href="https://www.wg-website.com/verify?code={{$email_data['verification_code']}}">Jetzt bestätigen!</a>
 
