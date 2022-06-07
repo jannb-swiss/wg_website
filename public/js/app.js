@@ -5123,6 +5123,11 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
+
+/**
+*Inspired by https://pusher.com/tutorials/how-to-build-a-chat-app-with-vue-js-and-laravel/
+*and may contain individual code parts of it.
+*/
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
@@ -5137,11 +5142,9 @@ Vue.component('chat-form', (__webpack_require__(/*! ./components/ChatForm.vue */
 
 var app = new Vue({
   el: '#app',
-  //Store chat messages for display in this array.
   data: {
     messages: []
   },
-  //Upon initialisation, run fetchMessages().
   created: function created() {
     var _this = this;
 
@@ -5157,17 +5160,12 @@ var app = new Vue({
     fetchMessages: function fetchMessages() {
       var _this2 = this;
 
-      //GET request to the messages route in our Laravel server to fetch all the messages
       axios.get('/messages').then(function (response) {
-        //Save the response in the messages array to display on the chat view
         _this2.messages = response.data;
       });
     },
-    //Receives the message that was emitted from the ChatForm Vue component
     addMessage: function addMessage(message) {
-      //Pushes it to the messages array
-      this.messages.push(message); //POST request to the messages route with the message data in order for our Laravel server to broadcast it.
-
+      this.messages.push(message);
       axios.post('/messages', message).then(function (response) {
         console.log(response.data);
       });
@@ -5210,8 +5208,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "5699740b4edf773997d9",
-  cluster: "eu",
+  key: "",
+  cluster: "",
   forceTLS: true
 });
 
@@ -34300,7 +34298,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "input-group" }, [
+  return _c("div", { staticClass: "input-group mt-1" }, [
     _c("input", {
       directives: [
         {

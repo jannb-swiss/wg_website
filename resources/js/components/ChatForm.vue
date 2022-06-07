@@ -1,5 +1,5 @@
 <template>
-    <div class="input-group">
+    <div class="input-group mt-1">
         <input
             id="btn-input"
             type="text"
