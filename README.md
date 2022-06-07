@@ -15,44 +15,36 @@ https://mailtrap.io/?gclid=CjwKCAjwy_aUBhACEiwA2IHHQKyhvsArb9FvHUD59EEjGmzCS-dN7
 
   
 <h4>Wechsle zum generierten .env File</h4>
-<sub>
-APP_NAME=WG-Website<br>
-APP_ENV=local<br>
-APP_KEY=generated key<br>
-APP_DEBUG=true<br>
+```ruby
+APP_NAME=WG-Website
+APP_ENV=local
+APP_KEY=generated key
+APP_DEBUG=true
 APP_URL=http://localhost
-</sub> <br>
 
-<sub>
-LOG_CHANNEL=stack<br>
-</sub> <br>
+LOG_CHANNEL=stack
 
-<sub>
-DB_CONNECTION=mysql<br>
-DB_HOST=127.0.0.1<br>
-DB_PORT=3306<br>
-DB_DATABASE=wg_website_db<br>
-DB_USERNAME=your username<br>
-DB_PASSWORD=your password<br>
-</sub> <br>
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=wg_website_db
+DB_USERNAME=your username
+DB_PASSWORD=your password
 
-<sub>
-MAIL_MAILER=smtp<br>
-MAIL_HOST=smtp.mailtrap.io<br>
-MAIL_PORT=2525<br>
-MAIL_USERNAME=mailtrap generated username!<br>
-MAIL_PASSWORD=mailtrap generated password!<br>
-MAIL_ENCRYPTION=null<br>
-MAIL_FROM_ADDRESS=hello@example.com<br>
-MAIL_FROM_NAME=WG-Website<br>
-</sub><br>
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=mailtrap generated username!
+MAIL_PASSWORD=mailtrap generated password!
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=hello@example.com
+MAIL_FROM_NAME=WG-Website
 
-<sub>
-CACHE_DRIVER=file<br>
-QUEUE_CONNECTION=sync<br>
-SESSION_DRIVER=file<br>
-SESSION_LIFETIME=120<br>
-</sub>
+CACHE_DRIVER=file
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+```
 
 <h4>Datenbank</h4>
 Erstelle in deiner MySQL-Datenbak die Datenbank "wg_website_db"<br>
@@ -76,11 +68,12 @@ Wechsle zum Repository Verzeichnis
 * trigger: php artisan schedule:run<br>
 * auto: php artisan schedule:work<br>
 
-<h2>Testing auf dem USB-Stick</h2>
+<h2>Testing auf dem USB-Stick (Für das Testen empfehle ich das GitHub-Repository zu nehmen!)</h2>
 
-<h4>E-Mail senden (Für das Testen empfehle das GitHub-Repository zu nehmen!) </h4>
+<h4>E-Mail senden</h4>
 * gehe zu resources/views/mail/signup-email.blade.php
 * Folgende zwei Zeilen austauschen
-* <!--<a href="http://127.0.0.1:8000/verify?code={{$email_data['verification_code']}}">Jetzt bestätigen!(for testing!)</a>-->
-* <a href="https://www.wg-website.com/verify?code={{$email_data['verification_code']}}">Jetzt bestätigen!</a>
-
+```html
+<!--<a href="http://127.0.0.1:8000/verify?code={{$email_data['verification_code']}}">Jetzt bestätigen!(for testing!)</a>-->
+<a href="https://www.wg-website.com/verify?code={{$email_data['verification_code']}}">Jetzt bestätigen!</a>
+```
