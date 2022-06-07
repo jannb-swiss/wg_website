@@ -15,36 +15,41 @@ https://mailtrap.io/?gclid=CjwKCAjwy_aUBhACEiwA2IHHQKyhvsArb9FvHUD59EEjGmzCS-dN7
 
   
 <h4>Wechsle zum generierten .env File</h4>
-```ruby
-APP_NAME=WG-Website
-APP_ENV=local
-APP_KEY=generated key
-APP_DEBUG=true
-APP_URL=http://localhost
 
-LOG_CHANNEL=stack
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=wg_website_db
-DB_USERNAME=your username
-DB_PASSWORD=your password
-
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=mailtrap generated username!
-MAIL_PASSWORD=mailtrap generated password!
-MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS=hello@example.com
-MAIL_FROM_NAME=WG-Website
-
-CACHE_DRIVER=file
-QUEUE_CONNECTION=sync
-SESSION_DRIVER=file
-SESSION_LIFETIME=120
-```
+<sub>
+APP_NAME=WG-Website<br>
+APP_ENV=local<br>
+APP_KEY=generated key<br>
+APP_DEBUG=true<br>
+APP_URL=http://localhost<br>
+</sub><br>
+<sub>
+LOG_CHANNEL=stack<br>
+</sub><br>
+<sub>
+DB_CONNECTION=mysql<br>
+DB_HOST=127.0.0.1<br>
+DB_PORT=3306<br>
+DB_DATABASE=wg_website_db<br>
+DB_USERNAME=your username<br>
+DB_PASSWORD=your password<br>
+</sub><br>
+<sub>
+MAIL_MAILER=smtp<br>
+MAIL_HOST=smtp.mailtrap.io<br>
+MAIL_PORT=2525<br>
+MAIL_USERNAME=mailtrap generated username!<br>
+MAIL_PASSWORD=mailtrap generated password!<br>
+MAIL_ENCRYPTION=null<br>
+MAIL_FROM_ADDRESS=hello@example.com<br>
+MAIL_FROM_NAME=WG-Website<br>
+</sub><br>
+<sub>
+CACHE_DRIVER=file<br>
+QUEUE_CONNECTION=sync<br>
+SESSION_DRIVER=file<br>
+SESSION_LIFETIME=120<br>
+</sub>
 
 <h4>Datenbank</h4>
 Erstelle in deiner MySQL-Datenbak die Datenbank "wg_website_db"<br>
