@@ -49,7 +49,6 @@ class Kernel extends ConsoleKernel
                 $cleaningPlan->save();
             }
         })->everyMinute();
-        /*})->everyMinute();*/
     }
 
     /**
